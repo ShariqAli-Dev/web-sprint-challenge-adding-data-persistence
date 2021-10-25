@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand --silent"
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand --silent",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "mu": "npx knex migrate:up",
+    "md": "npx knex migrate:down",
+    "latest": "npx knex migrate:latest",
+    "rollback": "npx knex migrate:rollback"
   },
   "repository": {
     "type": "git",
