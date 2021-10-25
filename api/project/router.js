@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         project_completed: Boolean(project.project_completed),
       };
     });
-    res.status.json(projectsToBool);
+    res.status(200).json(projectsToBool);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

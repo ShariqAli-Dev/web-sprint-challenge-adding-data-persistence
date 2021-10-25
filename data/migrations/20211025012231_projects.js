@@ -1,5 +1,5 @@
-exports.up = function (knex) {
-  knex.schema
+exports.up = async function (knex) {
+  await knex.schema
     .createTable('projects', (tbl) => {
       tbl.increments('project_id');
       tbl.string('project_name').notNullable();
