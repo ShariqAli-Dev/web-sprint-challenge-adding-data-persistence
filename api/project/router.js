@@ -18,4 +18,20 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    if (req.body.project_name) {
+      res.status(400).json({ message: 'Project name is required' });
+    } else {
+      const project = await Projects.insert(req.body);
+      res.status(201).json({
+        ...project,
+        project_completed: Boolean(project.project_completed),
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
