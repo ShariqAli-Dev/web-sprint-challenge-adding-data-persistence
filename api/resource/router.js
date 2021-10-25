@@ -19,8 +19,8 @@ router.post('/', async (req, res) => {
       .where('resource_name', req.body.resource_name)
       .first();
     if (!nameMaybe) {
-      const newName = await Resources.insert(req.body);
-      res.status(201).json(newName);
+      const resource = await Resources.insert(req.body);
+      res.status(201).json({ resource_name: resource[0].resource_name });
     } else {
       res.status(400).json({
         message: 'Name is already in use',
